@@ -4,13 +4,12 @@ import { Button } from "./button";
 import { LoadingState } from "./logo";
 
 interface Output {
-    poster?: any;
     text: string;
     isloading?: boolean;
     handleViewChange: () => void;
 }
 
-export const MovieOutputView = ({poster, text, isloading, handleViewChange}: Output) => {
+export const MovieOutputView = ({text, isloading, handleViewChange}: Output) => {
     return (
         <div className="flex flex-col justify-center items-center gap-3">
             {/* <div>{poster}</div> */}

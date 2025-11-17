@@ -12,7 +12,7 @@ import axios from "axios";
 
 export default function Home() {
   const [state, dispatch] =  useReducer(PopReducer, initialState);
-  const { favorite_q, mood_q, fun_q, poster,  movieinfo } = state;
+  const { favorite_q, mood_q, fun_q, movieinfo } = state;
   const buttonEnabled = favorite_q !== "" && mood_q !== "" && fun_q !== "";
   const [movieView, setMovieView] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
