@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { Logo } from "./components/logo";
@@ -17,22 +16,16 @@ export default function Home() {
   const buttonEnabled = favorite_q !== "" && mood_q !== "" && fun_q !== "";
   const [movieView, setMovieView] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
   
   const handleSubmit = async() => {
     setMovieView(false);
     const url = "http://127.0.0.1:8000/api/generator/recommend/"
     const preferenceData = favorite_q + " " + mood_q + " " + fun_q;
-    try {
-      const movieData = await axios.post(url, {
-        preferences: preferenceData
-      });
-      console.log(movieData.data);
-      dispatch({type: "SET_MOVIE_INFO", value: movieData.data.recommendations});
-    } catch (e) {
-      console.log(e);
-      setError(true);
-    }
+    const movieData = await axios.post(url, {
+      preferences: preferenceData
+    });
+    console.log(movieData.data);
+    dispatch({type: "SET_MOVIE_INFO", value: movieData.data.recommendations});
     setIsLoading(false); 
     dispatch({type: "SET_FAVORITE_Q", value: ""});
     dispatch({type: "SET_MOOD_Q", value: ""});
@@ -65,7 +58,7 @@ export default function Home() {
           placeholder="I want to watch something stupid and fun" 
         />
         <Button text="Let's Go" disabled={buttonEnabled} handleSubmit={handleSubmit} />
-      </div>: <MovieOutputView text={movieinfo} isloading={isLoading} error={error} handleViewChange={handleViewChange}/>}
+      </div>: <MovieOutputView text={movieinfo} isloading={isLoading} handleViewChange={handleViewChange}/>}
     </div>
   );
 }
