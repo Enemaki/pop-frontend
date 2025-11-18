@@ -19,7 +19,8 @@ export default function Home() {
   
   const handleSubmit = async() => {
     setMovieView(false);
-    const url = "http://127.0.0.1:8000/api/generator/recommend/"
+    // const url = "http://127.0.0.1:8000/api/generator/recommend/"
+    const url = "	https://pop-backend-glw7.onrender.com/api/generator/recommend/"
     const preferenceData = favorite_q + " " + mood_q + " " + fun_q;
     const movieData = await axios.post(url, {
       preferences: preferenceData
