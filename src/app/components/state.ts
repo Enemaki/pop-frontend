@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const initialState = {
     favorite_q: "",
     mood_q: "",
